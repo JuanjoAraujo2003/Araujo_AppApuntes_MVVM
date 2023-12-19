@@ -7,7 +7,7 @@
              BackgroundColor="DarkSlateGray">
 
     <ContentPage.BindingContext>
-        <viewModels:NoteViewModel />
+        <viewModels:JA_NoteViewModel />
     </ContentPage.BindingContext>
     <VerticalStackLayout Spacing="10" Margin="5">
         <Editor x:Name="TextEditor"

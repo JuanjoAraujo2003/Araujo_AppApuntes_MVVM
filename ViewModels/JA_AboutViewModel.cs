@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace Araujo_AppsApuntes.ViewModels
 {
-    internal class AboutViewModel
+    internal class JA_AboutViewModel
     {
         public string Title => AppInfo.Name;
         public string Version => AppInfo.VersionString;
@@ -12,7 +12,7 @@ namespace Araujo_AppsApuntes.ViewModels
         public string Message => "This app is written in XAML and C# with .NET MAUI.";
         public ICommand ShowMoreInfoCommand { get; }
 
-        public AboutViewModel()
+        public JA_AboutViewModel()
         {
             ShowMoreInfoCommand = new AsyncRelayCommand(ShowMoreInfo);
         }

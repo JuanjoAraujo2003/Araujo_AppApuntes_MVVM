@@ -8,7 +8,7 @@
              BackgroundColor="DarkSlateGrey">
 
     <ContentPage.BindingContext>
-        <viewModels:NotesViewModel />
+        <viewModels:JA_NotesViewModel />
     </ContentPage.BindingContext>
 
     

@@ -5,9 +5,9 @@ using System.Windows.Input;
 
 namespace Araujo_AppsApuntes.ViewModels
 {
-    internal class NoteViewModel : ObservableObject, IQueryAttributable
+    internal class JA_NoteViewModel : ObservableObject, IQueryAttributable
     {
-        private Models.Note _note;
+        private Models.JA_Note _note;
 
         public string Text
         {
@@ -29,14 +29,14 @@ namespace Araujo_AppsApuntes.ViewModels
         public ICommand SaveCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
 
-        public NoteViewModel()
+        public JA_NoteViewModel()
         {
-            _note = new Models.Note();
+            _note = new Models.JA_Note();
             SaveCommand = new AsyncRelayCommand(Save);
             DeleteCommand = new AsyncRelayCommand(Delete);
         }
 
-        public NoteViewModel(Models.Note note)
+        public JA_NoteViewModel(Models.JA_Note note)
         {
             _note = note;
             SaveCommand = new AsyncRelayCommand(Save);
@@ -60,14 +60,14 @@ namespace Araujo_AppsApuntes.ViewModels
         {
             if (query.ContainsKey("load"))
             {
-                _note = Models.Note.Load(query["load"].ToString());
+                _note = Models.JA_Note.Load(query["load"].ToString());
                 RefreshProperties();
             }
         }
 
         public void Reload()
         {
-            _note = Models.Note.Load(_note.Filename);
+            _note = Models.JA_Note.Load(_note.Filename);
             RefreshProperties();
         }
 

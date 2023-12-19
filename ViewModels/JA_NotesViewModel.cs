@@ -6,17 +6,17 @@ using Araujo_AppsApuntes.Models;
 
 namespace Araujo_AppsApuntes.ViewModels
 {
-    internal class NotesViewModel : IQueryAttributable
+    internal class JA_NotesViewModel : IQueryAttributable
     {
-        public ObservableCollection<ViewModels.NoteViewModel> AllNotes { get; }
+        public ObservableCollection<ViewModels.JA_NoteViewModel> AllNotes { get; }
         public ICommand NewCommand { get; }
         public ICommand SelectNoteCommand { get; }
 
-        public NotesViewModel()
+        public JA_NotesViewModel()
         {
-            AllNotes = new ObservableCollection<ViewModels.NoteViewModel>(Models.Note.LoadAll().Select(n => new NoteViewModel(n)));
+            AllNotes = new ObservableCollection<ViewModels.JA_NoteViewModel>(Models.JA_Note.LoadAll().Select(n => new JA_NoteViewModel(n)));
             NewCommand = new AsyncRelayCommand(NewNoteAsync);
-            SelectNoteCommand = new AsyncRelayCommand<ViewModels.NoteViewModel>(SelectNoteAsync);
+            SelectNoteCommand = new AsyncRelayCommand<ViewModels.JA_NoteViewModel>(SelectNoteAsync);
         }
 
         private async Task NewNoteAsync()
@@ -24,7 +24,7 @@ namespace Araujo_AppsApuntes.ViewModels
             await Shell.Current.GoToAsync(nameof(Views.NotePage));
         }
 
-        private async Task SelectNoteAsync(ViewModels.NoteViewModel note)
+        private async Task SelectNoteAsync(ViewModels.JA_NoteViewModel note)
         {
             if (note != null)
                 await Shell.Current.GoToAsync($"{nameof(Views.NotePage)}?load={note.Identifier}");
@@ -35,7 +35,7 @@ namespace Araujo_AppsApuntes.ViewModels
             if (query.ContainsKey("deleted"))
             {
                 string noteId = query["deleted"].ToString();
-                NoteViewModel matchedNote = AllNotes.Where((n) => n.Identifier == noteId).FirstOrDefault();
+                JA_NoteViewModel matchedNote = AllNotes.Where((n) => n.Identifier == noteId).FirstOrDefault();
 
                 
                 if (matchedNote != null)
@@ -44,7 +44,7 @@ namespace Araujo_AppsApuntes.ViewModels
             else if (query.ContainsKey("saved"))
             {
                 string noteId = query["saved"].ToString();
-                NoteViewModel matchedNote = AllNotes.Where((n) => n.Identifier == noteId).FirstOrDefault();
+                JA_NoteViewModel matchedNote = AllNotes.Where((n) => n.Identifier == noteId).FirstOrDefault();
 
                 
                 if (matchedNote != null)
@@ -54,7 +54,7 @@ namespace Araujo_AppsApuntes.ViewModels
                 }
                 
                 else
-                    AllNotes.Insert(0, new NoteViewModel(Models.Note.Load(noteId)));
+                    AllNotes.Insert(0, new JA_NoteViewModel(Models.JA_Note.Load(noteId)));
             }
         }
     }

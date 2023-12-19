@@ -8,7 +8,7 @@
              BackgroundColor="DeepSkyBlue">
     
     <ContentPage.BindingContext>
-        <viewModels:AboutViewModel />
+        <viewModels:JA_AboutViewModel />
     </ContentPage.BindingContext>
     <VerticalStackLayout Spacing="10" Margin="10">
         <HorizontalStackLayout Spacing="10">
